@@ -1,0 +1,447 @@
+/* Tastyc effects ported from demo theme */
+
+@keyframes rotateText {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shine {
+  from { left: -85%; }
+  to { left: 135%; }
+}
+
+@keyframes scrollWheel {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+}
+
+@keyframes preloaderPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #172a2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s;
+}
+
+.preloader--done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader__inner {
+  text-align: center;
+}
+
+.preloader__logo {
+  margin: 0 auto 1.5rem;
+  animation: preloaderPulse 1.2s ease infinite;
+}
+
+.preloader__spinner {
+  display: block;
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+  border: 2px solid rgba(230, 177, 95, 0.25);
+  border-top-color: #e6b15f;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero → content transition (Tastyc element 24590b0) */
+.hero-transition {
+  position: relative;
+  z-index: 5;
+}
+
+/* Full-bleed patterned band — sits above hero image, below scroll hint */
+.hero-transition::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 140px;
+  z-index: 8;
+  pointer-events: none;
+  background-color: #172a2f;
+  background-image: url('/assets/tastyc/images/pattern-dark.png');
+  background-repeat: repeat;
+  clip-path: polygon(0 100%, 0 36%, 50% 0%, 100% 36%, 100% 100%);
+}
+
+.hero-transition .scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 120px;
+  height: 168px;
+  margin-left: -60px;
+  padding: 20px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.scroll-hint__pill {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 128px;
+  background: #172a2f;
+  border: 1px solid #e6b15f;
+  border-radius: 50px;
+}
+
+/* Elementor e6b4124: 500px path centered inside 120px clip window */
+.scroll-hint__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: 500px;
+  height: 900px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.scroll-hint__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e6b15f;
+}
+
+.scroll-hint__arrow svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.scrl-hint-anim {
+  animation: scrolltwo 1s infinite;
+}
+
+@keyframes scrolltwo {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+  100% { transform: translateY(0); }
+}
+
+/* Content frame */
+.content-frame {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+/* Seamless pattern continuation below hero */
+.content-frame::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 72px;
+  margin-top: -72px;
+  pointer-events: none;
+  background-color: #172a2f;
+  background-image: url('/assets/tastyc/images/pattern-dark.png');
+  background-repeat: repeat;
+  z-index: 0;
+}
+
+@media (max-width: 1024px) {
+  .hero-transition .scroll-hint {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-transition .scroll-hint {
+    transform: scale(0.8);
+  }
+}
+
+/* Hero circular scroll button — sibling of transition band, above ::after (z-index 8) */
+.hero-transition .hero-scroll-btn {
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+  width: 141px;
+  height: 141px;
+  z-index: 14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #18312e;
+  border-radius: 50%;
+  border: 1px solid #e6b15f;
+  color: #fff;
+}
+
+.hero-scroll-btn svg {
+  position: absolute;
+  inset: 5%;
+  animation: rotateText 10s linear infinite;
+}
+
+.hero-scroll-btn__icon {
+  position: relative;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  background: #e6b15f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-scroll-btn__icon img {
+  width: 48px;
+  height: auto;
+}
+
+/* Offer block (special dishes + chef arch images) */
+.offer-block .inner-box {
+  display: block;
+  text-align: center;
+}
+
+.offer-block .image,
+.image-col.img-size-sq,
+.image-col.img-size-sq-2 {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  border-radius: 40rem 40rem 0 0;
+}
+
+.image-col.img-size-sq {
+  padding-top: 100%;
+}
+
+.image-col.img-size-sq-2 {
+  padding-top: 120%;
+}
+
+/* Tastyc image-col — gold inset border only, no shine */
+.image-col {
+  position: relative;
+}
+
+.image-col.img-size-lg {
+  padding-top: 140%;
+  overflow: hidden;
+  border-radius: 40rem 40rem 0 0;
+}
+
+.image-col.img-size-lg::before {
+  content: '';
+  position: absolute;
+  inset: 15px;
+  border: 1px solid #e6b15f;
+  border-radius: 40rem 40rem 0 0;
+  pointer-events: none;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.offer-block .image::before,
+.image-col.img-size-sq::before,
+.image-col.img-size-sq-2::before {
+  content: '';
+  position: absolute;
+  inset: 15px;
+  border: 1px solid #e6b15f;
+  border-radius: 40rem 40rem 0 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: transform 0.5s ease 0.3s;
+}
+
+/* Shine effect — offer-block and carousel arches only */
+.offer-block .image::after,
+.image-col.img-size-sq::after,
+.image-col.img-size-sq-2::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -85%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.4));
+  transform: skewX(-25deg);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.offer-block .inner-box:hover .image::after,
+.image-col.img-size-sq:hover::after,
+.image-col.img-size-sq-2:hover::after {
+  animation: shine 1s;
+}
+
+.offer-block .inner-box:hover .image::before,
+.image-col.img-size-sq:hover::before,
+.image-col.img-size-sq-2:hover::before {
+  transform: rotateY(180deg);
+}
+
+.offer-block .image img,
+.image-col.img-size-sq img,
+.image-col.img-size-sq-2 img,
+.image-col.img-size-lg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 40rem 40rem 0 0;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.offer-block .inner-box:hover .image img,
+.image-col.img-size-sq:hover img,
+.image-col.img-size-sq-2:hover img {
+  transform: scale(1.04);
+}
+
+.chef__image-wrap.offer-block .image {
+  padding-top: 110%;
+  margin-bottom: 0;
+}
+
+/* Hero swiper parallax cover */
+.hero__cover.tst-cover-frame,
+.tst-cover-frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero__cover img.tst-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__navigation.tst-main-slider-navigation {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.tst-slider-btn,
+.hero__nav-btn {
+  pointer-events: auto;
+}
+
+/* tst-prices */
+.tst-prices,
+.dish-slide__prices {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.tst-old-price,
+.dish-slide__old {
+  font-family: var(--font-serif);
+  text-decoration: line-through;
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.tst-color,
+.dish-slide__price {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.dish-slide__category.suptitle {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.dish-slide__name.h6 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.dish-slide__desc.tst-text {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  padding: 0 0.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .hero-scroll-btn {
+    right: 20px;
+    bottom: 100px;
+    width: 110px;
+    height: 110px;
+    transform: scale(0.85);
+  }
+
+  .hero-scroll-btn__icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .hero-scroll-btn__icon img {
+    width: 36px;
+  }
+}

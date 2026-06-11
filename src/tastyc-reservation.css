@@ -1,0 +1,212 @@
+/* Book A Table — Tastyc d6dd953 / b4bd74a / b0551ad / d769337 */
+
+.reservation {
+  padding: 0;
+  background: transparent;
+}
+
+.reservation__layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 800px;
+}
+
+.reservation__panel {
+  position: relative;
+  width: 50%;
+  padding: 15px;
+  /* Opaque base blocks site-main pattern; ::before adds a single overlay */
+  background-color: #172a2f;
+}
+
+.reservation__panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/tastyc/images/pattern-dark-2x-2.png');
+  background-size: 320px auto;
+  background-repeat: repeat;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.reservation__panel-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(800px - 30px);
+  padding: 75px;
+  border: 1px solid #e6b15f;
+}
+
+.reservation__intro {
+  text-align: center;
+}
+
+.reservation__intro .title-box {
+  margin-bottom: 1.25rem;
+}
+
+.reservation__lead {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-light);
+}
+
+.reservation__lead a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.reservation__lead a:hover {
+  text-decoration: underline;
+}
+
+.reservation__image {
+  width: 50%;
+  min-height: 800px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Form — Tastyc metform dark inputs */
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.reservation-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  padding: 15px 20px;
+  color: #fff;
+  background: #172a2f;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.reservation-form input::placeholder,
+.reservation-form textarea::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+.reservation-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23e6b15f' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.reservation-form select:invalid {
+  color: #fff;
+}
+
+.reservation-form select option {
+  color: #172a2f;
+  background: #fff;
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus,
+.reservation-form textarea:focus {
+  border-color: #e6b15f;
+}
+
+.reservation-form textarea {
+  min-height: 120px;
+  resize: vertical;
+  margin-bottom: 20px;
+}
+
+.reservation-form__submit {
+  width: 100%;
+  margin-top: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.reservation-form__success {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.reservation-form__success h3 {
+  font-family: var(--font-serif);
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 1024px) {
+  .reservation__layout {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .reservation__panel,
+  .reservation__image {
+    width: 100%;
+  }
+
+  .reservation__panel {
+    padding: 10px;
+  }
+
+  .reservation__panel-inner {
+    min-height: 0;
+    padding: 40px 24px;
+  }
+
+  .reservation__image {
+    min-height: 280px;
+    max-height: 360px;
+  }
+}
+
+@media (max-width: 600px) {
+  .reservation__panel-inner {
+    padding: 28px 16px;
+  }
+
+  .reservation__lead {
+    font-size: 0.875rem;
+  }
+
+  .reservation-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .reservation-form input,
+  .reservation-form select,
+  .reservation-form textarea {
+    padding: 14px 16px;
+  }
+
+  .reservation__image {
+    min-height: 220px;
+    max-height: 280px;
+  }
+}

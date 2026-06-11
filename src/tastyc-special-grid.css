@@ -1,0 +1,294 @@
+/* ── Special Dishes + Chef 2×2 grid (Tastyc fine-dining layout) ── */
+
+.special-chef-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.special-chef-grid__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(800px, auto) minmax(560px, auto);
+  overflow: visible;
+}
+
+.special-chef-grid__cell {
+  position: relative;
+  min-height: 420px;
+}
+
+.special-chef-grid__cell--dishes {
+  background-color: #0e1b21;
+  overflow: visible;
+  z-index: 2;
+}
+
+.special-chef-grid__cell--chef {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0e1b21;
+  padding: 120px 10%;
+  overflow: hidden;
+}
+
+.special-chef-grid__dishes-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 800px;
+  padding: 60px;
+}
+
+.special-chef-grid__dishes-heading--mobile {
+  display: none;
+}
+
+.special-chef-grid__swiper.tst-slider-two {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+  overflow: visible;
+}
+
+.special-chef-grid__swiper .swiper-slide {
+  height: auto;
+}
+
+.special-chef-grid__swiper .tst-slider-two-slide {
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.85) translateY(15px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.special-chef-grid__swiper .swiper-slide-active .tst-slider-two-slide {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1) translateY(0);
+}
+
+.special-chef-grid__swiper .image-col.img-size-sq-2 {
+  width: 100%;
+  max-width: none;
+  margin-bottom: 1.25rem;
+}
+
+.special-chef-grid__swiper .tst-slider-two-slide .h6 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.special-chef-grid__swiper .tst-slider-two-slide .suptitle {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.65rem;
+}
+
+.special-chef-grid__swiper .tst-slider-two-slide .tst-text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-light);
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.special-chef-grid__swiper .tst-prices {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.special-chef-grid__swiper .tst-price {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.special-chef-grid__swiper .tst-old-price {
+  opacity: 0.7;
+  text-decoration: line-through;
+  color: var(--text);
+}
+
+.special-chef-grid__swiper .tst-color {
+  color: var(--accent);
+}
+
+.special-chef-grid__swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+
+.special-chef-grid__swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  opacity: 1;
+}
+
+.special-chef-grid__swiper .swiper-pagination-bullet-active {
+  background: var(--accent);
+}
+
+/* Vertical tab — rotated strip on dining/dishes boundary (Tastyc bdf6ac3) */
+.special-chef-grid__cell--dining {
+  position: relative;
+  overflow: visible;
+  z-index: 3;
+}
+
+.special-chef-grid__vertical-tab {
+  position: absolute;
+  top: 45%;
+  left: -215px;
+  z-index: 5;
+  width: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  background: #0e1b21;
+  border: 1px solid #445654;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+.special-chef-grid__vertical-tab span {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.special-chef-grid__cell--kitchen {
+  overflow: hidden;
+}
+
+.special-chef-grid__cell--dining img,
+.special-chef-grid__cell--kitchen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.special-chef-grid__chef-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.special-chef-grid__chef-inner .tst-image-s-2 {
+  width: 130px;
+  margin: 0 auto 20px;
+}
+
+.special-chef-grid__chef-inner .image-col.img-size-lg {
+  width: 100%;
+  margin: 0;
+}
+
+.special-chef-grid__chef-inner .title-box {
+  margin-bottom: 1.25rem;
+}
+
+.special-chef-grid__chef-inner .tst-title--h {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 500;
+  color: var(--text);
+  margin: 0 0 1rem;
+}
+
+.special-chef-grid__chef-text {
+  margin: 0 0 1.75rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-light);
+}
+
+.tst-mb-15 { margin-bottom: 15px; }
+.tst-mb-20 { margin-bottom: 20px; }
+
+@media (max-width: 1024px) {
+  .special-chef-grid__layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .special-chef-grid__dishes-inner {
+    min-height: 0;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .special-chef-grid__cell--chef {
+    padding: 80px 10px;
+  }
+
+  .special-chef-grid__dishes-heading--mobile {
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .special-chef-grid__vertical-tab {
+    display: none;
+  }
+
+  .special-chef-grid__cell--dining,
+  .special-chef-grid__cell--kitchen {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .special-chef-grid__cell {
+    min-height: 0;
+  }
+
+  .special-chef-grid__dishes-inner {
+    padding: 2rem 1rem;
+  }
+
+  .special-chef-grid__cell--chef {
+    padding: 3rem 1.25rem;
+  }
+
+  .special-chef-grid__cell--dining,
+  .special-chef-grid__cell--kitchen {
+    min-height: 260px;
+  }
+
+  .special-chef-grid__swiper .image-col.img-size-sq-2 {
+    max-width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .special-chef-grid__chef-inner .tst-title--h {
+    font-size: 1.65rem;
+  }
+}

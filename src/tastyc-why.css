@@ -1,0 +1,161 @@
+/* Why Choose Us — Tastyc advantages-style-2 + number-style-2 */
+
+.why {
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+.why .title-box {
+  margin-bottom: 3rem;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.why-col {
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px;
+}
+
+/* Advantages arched images */
+.adv-image {
+  position: relative;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.adv-image .image-box {
+  position: relative;
+  display: block;
+  padding-top: 135%;
+  overflow: hidden;
+  border-radius: 800px 800px 0 0;
+}
+
+.adv-image .image-box::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95),
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.05)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.adv-image .image-box img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.adv-image:hover .image-box img {
+  transform: scale(1.05);
+}
+
+.adv-image .over-box {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0 30px 30px;
+  z-index: 2;
+}
+
+.adv-image .h6 {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.adv-image:hover .h6 {
+  color: var(--accent);
+}
+
+/* Stats below each image */
+.why .tst-count {
+  text-align: center;
+}
+
+.why .tst-count .h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 4vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.why .tst-count .tst-after {
+  display: inline-block;
+  font-size: 0.65em;
+  transform: translateY(5px) translateX(3px);
+}
+
+.why .tst-count .h6.tst-color {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.why .tst-count .tst-text {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-light);
+}
+
+.tst-mb-20 {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1024px) {
+  .why {
+    padding: 80px 0;
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .why {
+    padding: 3rem 0;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
+  }
+
+  .why-col {
+    max-width: 280px;
+    margin-inline: auto;
+  }
+
+  .why .tst-count .h2 {
+    font-size: 2rem;
+  }
+}

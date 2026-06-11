@@ -1,0 +1,164 @@
+/* Tastyc Fine Dining — ui-dark theme (#172a2f) */
+
+:root {
+  --accent: #e6b15f;
+  --accent-hover: #f39c12;
+  --dark: #172a2f;
+  --dark-soft: #445654;
+  --bg: #172a2f;
+  --bg-elevated: #1a2f33;
+  --bg-card: #182f31;
+  --bg-white: #182f31;
+  --text: #ffffff;
+  --text-light: rgba(255, 255, 255, 0.65);
+  --heading: #ffffff;
+  --white: #ffffff;
+  --border: rgba(68, 86, 84, 0.6);
+
+  --font-serif: 'Fraunces', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Josefin Sans', system-ui, sans-serif;
+}
+
+body.ui-dark {
+  background-color: #172a2f;
+  color: #ffffff;
+}
+
+body.ui-dark h1,
+body.ui-dark h2,
+body.ui-dark h3,
+body.ui-dark h4,
+body.ui-dark .section-title,
+body.ui-dark .menucat-title .h3 {
+  color: #ffffff;
+  font-family: var(--font-serif);
+  font-weight: 300;
+}
+
+body.ui-dark .tst-text,
+body.ui-dark p,
+body.ui-dark .dish-slide__desc,
+body.ui-dark .dish-block__body p,
+body.ui-dark .counter p,
+body.ui-dark .reservation__lead,
+body.ui-dark .chef__content p {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Main content area with pattern texture */
+.ui-dark.full-layout .site-main {
+  background-color: #172a2f;
+  background-image: url('/assets/tastyc/images/pattern-dark.png');
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+.ui-dark .content-frame {
+  background: transparent;
+}
+
+/* Hero curve — transparent; patterned band (::after) provides the transition fill */
+.ui-dark .hero__curve path,
+.ui-dark .bg-curve-center path {
+  fill: transparent;
+}
+
+.ui-dark .hero-transition::after {
+  background-color: #172a2f;
+  background-image: url('/assets/tastyc/images/pattern-dark.png');
+  background-repeat: repeat;
+}
+
+/* Hero scroll pill — already dark-themed in tastyc-effects.css */
+
+/* Header solid state */
+.ui-dark .header--solid {
+  background: rgba(23, 42, 47, 0.97);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ui-dark .header--solid .header__logo,
+.ui-dark .header--solid .header__nav a {
+  color: #ffffff;
+}
+
+/* Sections */
+.ui-dark .section,
+.ui-dark .category-section,
+.ui-dark .special-dishes,
+.ui-dark .special-chef-grid,
+.ui-dark .menu,
+.ui-dark .reservation,
+.ui-dark .why,
+.ui-dark .blog,
+.ui-dark .chef {
+  background: transparent;
+}
+
+.ui-dark .special-chef-grid__cell--dishes,
+.ui-dark .special-chef-grid__cell--chef {
+  background-color: #0e1b21;
+}
+
+/* Category strip on dark */
+.ui-dark .category-section {
+  background: transparent;
+}
+
+.ui-dark .menucat-list .menucat-title .h3 {
+  color: #ffffff;
+}
+
+/* Cards / forms on dark */
+.ui-dark .stat {
+  background: #182f31;
+  border-color: var(--border);
+}
+
+.ui-dark .menu-item:hover,
+.ui-dark .dish-block:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ui-dark .slider-btn {
+  background: #182f31;
+  border-color: var(--border);
+  color: #fff;
+}
+
+.ui-dark .tst-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ui-dark .tst-label:hover {
+  color: var(--accent);
+}
+
+/* Footer map + visit panel */
+.ui-dark .footer.white-footer {
+  background: #041314;
+}
+
+/* Preloader */
+.ui-dark .preloader {
+  background: #172a2f;
+}
+
+/* Visit sidebar */
+.ui-dark .visit-sidebar {
+  background: #1a2f33;
+  color: #fff;
+}
+
+.ui-dark .visit-sidebar li {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Menu tabs */
+.ui-dark .menu-tabs__btn {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.ui-dark .menu-layout__label {
+  color: rgba(230, 177, 95, 0.08);
+}
