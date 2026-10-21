@@ -1,7 +1,7 @@
 import type { MenuCategory } from './menu';
 
 const TODAYS_SPECIALS_URL =
-  'http://127.0.0.1:8080/api/public/todays-specials?slug=tasteofasia';
+  'https://food.lztechserve.com/api/public/todays-specials?slug=tasteofasia';
 
 export type TodaysSpecialItem = {
   id: string;
