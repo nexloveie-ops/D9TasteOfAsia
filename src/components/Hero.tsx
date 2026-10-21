@@ -13,6 +13,9 @@ interface HeroProps {
 
 export function Hero({ onOpenReservation }: HeroProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [compactHero, setCompactHero] = useState(
+    () => window.matchMedia('(max-width: 768px)').matches,
+  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -20,13 +23,31 @@ export function Hero({ onOpenReservation }: HeroProps) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const sync = () => setCompactHero(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
+
   return (
     <section id="home" className={`hero bg-video-wrap ${scrolled ? 'hero--scrolled' : ''}`}>
       <Swiper
+        key={compactHero ? 'compact' : 'full'}
         modules={[Autoplay, EffectFade, Navigation]}
-        effect="fade"
+        effect={compactHero ? 'slide' : 'fade'}
         speed={900}
-        loop
+        loop={!compactHero}
+        rewind={compactHero}
+        autoHeight={compactHero}
+        onSlideChange={(swiper) => {
+          if (!swiper.params.autoHeight) return;
+          requestAnimationFrame(() => swiper.updateAutoHeight());
+        }}
+        onSlideChangeTransitionEnd={(swiper) => {
+          if (swiper.params.autoHeight) swiper.updateAutoHeight();
+        }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         navigation={{
           prevEl: '.hero__nav-prev',

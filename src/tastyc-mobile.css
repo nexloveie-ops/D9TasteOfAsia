@@ -130,14 +130,34 @@
     height: 48px;
   }
 
-  /* Hero */
+  /* Hero — wide banners stay complete instead of being cropped by the tall viewport */
   .hero {
-    min-height: 100svh;
-    min-height: -webkit-fill-available;
+    height: auto;
+    min-height: 0;
+    padding-top: var(--header-h);
+    padding-bottom: 160px;
   }
 
-  .hero__container {
-    padding: calc(var(--header-h) + 1.25rem) 1rem 7rem;
+  .hero .hero__swiper,
+  .hero .hero__swiper .swiper-slide {
+    height: auto;
+  }
+
+  .hero .hero__cover.tst-cover-frame {
+    position: relative;
+    inset: auto;
+    aspect-ratio: 1949 / 807;
+    background: #0c1c1f;
+  }
+
+  .hero .hero__cover img.tst-cover {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .hero .hero__container {
+    height: auto;
+    padding: 1.5rem 1rem 0.5rem;
   }
 
   .hero__title {
