@@ -27,18 +27,12 @@ export function Footer() {
 
         <div
           className="footer__panel"
-          style={{ backgroundImage: `url(${assets.grid.dining})` }}
+          style={{ backgroundImage: `url(${assets.grid.balcony})` }}
         >
           <div className="footer__panel-overlay" aria-hidden="true" />
 
           <div className="footer__panel-content">
             <div className="footer__panel-main">
-              <div className="tst-image-s-2 footer__arch">
-                <div className="image-col img-size-lg">
-                  <img src={assets.grid.dining} alt="" />
-                </div>
-              </div>
-
               <a href="#home" className="footer__brand" aria-label="Taste Of Asia home">
                 <BrandMark variant="footer" />
               </a>

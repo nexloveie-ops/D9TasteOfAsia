@@ -1,4 +1,5 @@
-import { categoryStrip } from '../data/menu';
+import { categoryStrip, type MenuCategory } from '../data/menu';
+import { siteCategoryFor, type TodaysSpecialGroup } from '../data/todaysSpecials';
 import { StarIcon } from './StarIcon';
 
 function ArrowIcon() {
@@ -9,7 +10,21 @@ function ArrowIcon() {
   );
 }
 
-export function CategoryStrip() {
+export function CategoryStrip({
+  groups,
+  onSelect,
+}: {
+  groups: TodaysSpecialGroup[];
+  onSelect: (id: MenuCategory) => void;
+}) {
+  const present = new Set(
+    groups
+      .map((group) => siteCategoryFor(group))
+      .filter((id): id is MenuCategory => id !== null),
+  );
+  const visible = categoryStrip.filter((cat) => present.has(cat.id));
+  if (visible.length === 0) return null;
+
   return (
     <section id="category-start" className="category-section">
       <div className="category-section__inner">
@@ -17,15 +32,23 @@ export function CategoryStrip() {
           <div className="title-box title-box--centered">
             <div className="suptitle">
               <StarIcon className="icon-elem-svg" />
-              <span>Explore Our Delicious Selections</span>
+              <span>Today's Specials</span>
               <StarIcon className="icon-elem-svg" />
             </div>
           </div>
         </div>
 
         <div className="category-strip">
-          {categoryStrip.map((cat) => (
-            <a key={cat.id} href={`#menu-${cat.id}`} className="menucat-row">
+          {visible.map((cat) => (
+            <a
+              key={cat.id}
+              href="#menu"
+              className="menucat-row"
+              onClick={(event) => {
+                event.preventDefault();
+                onSelect(cat.id);
+              }}
+            >
               <div className="menucat-list">
                 <div
                   className="menucat-overlay"

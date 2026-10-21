@@ -2,7 +2,7 @@ import { assets } from '../assets';
 
 export function HeroScrollBtn() {
   return (
-    <a href="#content-start" className="hero-scroll-btn" aria-label="Scroll to content">
+    <a href="#reservation" className="hero-scroll-btn" aria-label="Book a table">
       <svg viewBox="0 0 200 200" aria-hidden="true">
         <defs>
           <path

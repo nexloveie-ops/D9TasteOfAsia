@@ -1,5 +1,9 @@
 /* ── Delicious Menu — Tastyc book-style tabs ── */
 
+#menu {
+  scroll-margin-top: var(--header-h);
+}
+
 .menu-tabs-box .tab-buttons {
   position: relative;
   display: flex;
@@ -144,6 +148,10 @@
   gap: 0;
 }
 
+.menu-book-row--list-only {
+  grid-template-columns: 1fr;
+}
+
 .menu-col--list {
   padding-right: 48px;
   min-width: 0;
@@ -163,6 +171,16 @@
   font-size: clamp(1.75rem, 3vw, 2.25rem);
   font-weight: 500;
   color: var(--text);
+}
+
+.menu-col__title-en {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
 .menu-tabs-box .dish-blocks {
@@ -243,6 +261,24 @@
   display: inline;
 }
 
+.menu-tabs-box .dish-name-en,
+.menu-tabs-box .dish-desc-en {
+  display: block;
+}
+
+.menu-tabs-box .dish-name-en {
+  margin-top: 0.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.menu-tabs-box .dish-desc-en {
+  margin-top: 0.45rem;
+}
+
 .menu-tabs-box .dish-block .dish-title .s-info {
   display: inline-block;
   vertical-align: top;
@@ -275,14 +311,84 @@
   white-space: nowrap;
 }
 
+.menu-tabs-box .dish-block .dish-title .price-old {
+  margin-right: 0.45rem;
+  color: var(--text-light);
+  text-decoration: line-through;
+}
+
 .menu-tabs-box .dish-block .dish-text {
   font-size: 14px;
   line-height: 1.5;
   color: var(--text-light);
 }
 
+.menu-tabs-box .dish-pager {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.menu-tabs-box .dish-pager__btn {
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+}
+
+.menu-tabs-box .dish-pager__btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.menu-tabs-box .dish-pager__btn:disabled:hover {
+  background: var(--bg-card);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.menu-tabs-box .dish-pager__dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menu-tabs-box .dish-pager__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-tabs-box .dish-pager__dot.is-active {
+  background: var(--accent);
+}
+
 .menu-tabs-box .menu-col--image .image-col.img-size-sq {
   margin: 0;
+}
+
+.menu-tabs-box .menu-col--image .image-col.img-size-sq.image-col--poster {
+  border-radius: 12px;
+}
+
+.menu-tabs-box .menu-col--image .image-col.img-size-sq.image-col--poster::before,
+.menu-tabs-box .menu-col--image .image-col.img-size-sq.image-col--poster::after {
+  display: none;
+}
+
+.menu-tabs-box .menu-col--image .image-col.img-size-sq.image-col--poster img {
+  object-fit: contain;
+  object-position: center;
+  border-radius: 12px;
+  background: #111;
+}
+
+.menu-tabs-box .menu-col--image .image-col.img-size-sq.image-col--poster:hover img {
+  transform: none;
 }
 
 .menu-note {

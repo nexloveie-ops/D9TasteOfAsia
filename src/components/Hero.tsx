@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Navigation, Parallax } from 'swiper/modules';
+import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import { heroSlides } from '../data/menu';
 import { ThemeButton } from './ThemeButton';
 import 'swiper/css';
@@ -23,10 +23,9 @@ export function Hero({ onOpenReservation }: HeroProps) {
   return (
     <section id="home" className={`hero bg-video-wrap ${scrolled ? 'hero--scrolled' : ''}`}>
       <Swiper
-        modules={[Autoplay, EffectFade, Navigation, Parallax]}
+        modules={[Autoplay, EffectFade, Navigation]}
         effect="fade"
         speed={900}
-        parallax
         loop
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         navigation={{
@@ -37,29 +36,29 @@ export function Hero({ onOpenReservation }: HeroProps) {
       >
         {heroSlides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="hero__cover tst-cover-frame">
+            <div className={`hero__cover tst-cover-frame${slide.artwork ? ' hero__cover--artwork' : ''}`}>
               <img
                 src={slide.image}
-                alt=""
+                alt={slide.artwork ? 'Taste Of Asia — Authentic Asian Cuisine' : ''}
                 className="tst-cover"
-                data-swiper-parallax-scale="1.15"
-                data-swiper-parallax-duration="1000"
               />
-              <div className="hero__overlay tst-overlay" />
+              {!slide.artwork && <div className="hero__overlay tst-overlay" />}
             </div>
-            <div className="hero__container auto-container">
-              <div className="hero__content align-center">
-                <p className="hero__suptitle tst-suptitle">{slide.eyebrow}</p>
-                <h1 className="hero__title tst-title--h">{slide.title}</h1>
-                <p className="hero__text tst-text-lg">{slide.subtitle}</p>
-                <div className="hero__actions">
-                  <ThemeButton onClick={onOpenReservation}>Book a table</ThemeButton>
-                  <a href="#menu" className="tst-label tst-label--light">
-                    View Menu
-                  </a>
+            {!slide.artwork && (
+              <div className="hero__container auto-container">
+                <div className="hero__content align-center">
+                  <p className="hero__suptitle tst-suptitle">{slide.eyebrow}</p>
+                  <h1 className="hero__title tst-title--h">{slide.title}</h1>
+                  <p className="hero__text tst-text-lg">{slide.subtitle}</p>
+                  <div className="hero__actions">
+                    <ThemeButton onClick={onOpenReservation}>Book a table</ThemeButton>
+                    <a href="#menu" className="tst-label tst-label--light">
+                      View Menu
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </SwiperSlide>
         ))}
       </Swiper>

@@ -9,12 +9,16 @@ import { SpecialChefGrid } from './components/SpecialChefGrid';
 import { MenuSection } from './components/MenuSection';
 import { WhyChooseUs } from './components/WhyChooseUs';
 import { Reservation } from './components/Reservation';
-import { BlogSection } from './components/BlogSection';
+import { MainFooterBreak } from './components/MainFooterBreak';
 import { Footer } from './components/Footer';
 import { VisitSidebar } from './components/VisitSidebar';
+import type { MenuCategory } from './data/menu';
+import { useTodaysSpecials } from './hooks/useTodaysSpecials';
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [menuCategory, setMenuCategory] = useState<MenuCategory | null>(null);
+  const specials = useTodaysSpecials();
 
   useEffect(() => {
     document.body.classList.add('ui-dark', 'full-layout');
@@ -24,6 +28,13 @@ function App() {
       document.body.style.backgroundColor = '';
     };
   }, []);
+
+  function openMenuCategory(id: MenuCategory) {
+    setMenuCategory(id);
+    requestAnimationFrame(() => {
+      document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
 
   function openReservation() {
     setSidebarOpen(false);
@@ -41,14 +52,14 @@ function App() {
           <HeroScrollBtn />
         </div>
         <div id="content-start" className="content-frame">
-          <CategoryStrip />
+          <CategoryStrip groups={specials.groups} onSelect={openMenuCategory} />
           <SpecialChefGrid />
-          <MenuSection />
+          <MenuSection focus={menuCategory} groups={specials.groups} status={specials.status} />
           <WhyChooseUs />
           <Reservation />
-          <BlogSection />
         </div>
       </main>
+      <MainFooterBreak />
       <Footer />
 
       <button type="button" className="fab-reservation" onClick={() => setSidebarOpen(true)}>

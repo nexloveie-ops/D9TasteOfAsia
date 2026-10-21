@@ -81,7 +81,7 @@ export function Reservation() {
 
         <div
           className="reservation__image"
-          style={{ backgroundImage: `url(${assets.grid.dining})` }}
+          style={{ backgroundImage: `url(${assets.reservationDining})` }}
           aria-hidden="true"
         />
       </div>

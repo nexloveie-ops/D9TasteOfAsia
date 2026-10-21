@@ -10,7 +10,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const categoryLabels: Record<string, string> = {
-  hongkong: 'Hong Kong',
+  hongkong: 'Cantonese',
+  sichuan: 'Sichuan',
   japanese: 'Japanese',
   dimsum: 'Dim Sum',
   drinks: 'Drinks',
@@ -62,23 +63,35 @@ export function SpecialDishes() {
               <SwiperSlide key={dish.id}>
                 <article className="offer-block tst-slider-two-slide">
                   <div className="inner-box">
-                    <div className="image image-col img-size-sq-2">
+                    <div className={`image image-col img-size-sq-2${dish.poster ? ' image-col--poster' : ''}`}>
                       <img src={dish.image} alt={dish.name} loading="lazy" />
                     </div>
                     <span className="dish-slide__category suptitle">
                       {categoryLabels[dish.category]}
                     </span>
-                    <h3 className="h6 dish-slide__name">{dish.name}</h3>
-                    <p className="dish-slide__desc tst-text">{dish.description}</p>
+                    <h3 className="h6 dish-slide__name">
+                      {dish.name}
+                      {dish.nameEn && <span className="dish-name-en">{dish.nameEn}</span>}
+                    </h3>
+                    <p className="dish-slide__desc tst-text">
+                      {dish.description}
+                      {dish.descriptionEn && <span className="dish-desc-en">{dish.descriptionEn}</span>}
+                    </p>
                     <div className="dish-slide__prices tst-prices">
-                      {dish.originalPrice && (
-                        <span className="dish-slide__old tst-price tst-old-price">
-                          €{dish.originalPrice.toFixed(2)}
-                        </span>
+                      {dish.priceLabel ? (
+                        <span className="dish-slide__price tst-price tst-color">{dish.priceLabel}</span>
+                      ) : (
+                        <>
+                          {dish.originalPrice && (
+                            <span className="dish-slide__old tst-price tst-old-price">
+                              €{dish.originalPrice.toFixed(2)}
+                            </span>
+                          )}
+                          <span className="dish-slide__price tst-price tst-color">
+                            €{dish.price.toFixed(2)}
+                          </span>
+                        </>
                       )}
-                      <span className="dish-slide__price tst-price tst-color">
-                        €{dish.price.toFixed(2)}
-                      </span>
                     </div>
                   </div>
                 </article>

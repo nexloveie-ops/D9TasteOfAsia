@@ -3,6 +3,7 @@
 .reservation {
   padding: 0;
   background: transparent;
+  scroll-margin-top: var(--header-h);
 }
 
 .reservation__layout {
@@ -66,10 +67,14 @@
 
 .reservation__image {
   width: 50%;
-  min-height: 800px;
+  box-sizing: border-box;
+  /* Match the form frame: panel padding insets the gold box on every side. */
+  padding: 15px 15px 15px 0;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-origin: content-box;
+  background-clip: content-box;
 }
 
 /* Form — Tastyc metform dark inputs */
@@ -179,6 +184,7 @@
   }
 
   .reservation__image {
+    padding: 0 10px 10px;
     min-height: 280px;
     max-height: 360px;
   }

@@ -1,3 +1,36 @@
+/* Break between the page and the map footer */
+.site-break {
+  position: relative;
+  background-color: #0c1c1f;
+  background-image: url('/assets/tastyc/images/pattern-dark.png');
+  background-repeat: repeat;
+  text-align: center;
+  padding: 4.5rem 1.25rem;
+  border-top: 1px solid rgba(230, 177, 95, 0.4);
+  border-bottom: 1px solid rgba(230, 177, 95, 0.4);
+}
+
+.site-break__inner {
+  width: min(100%, 720px);
+  margin-inline: auto;
+}
+
+.site-break__name {
+  margin-top: 0.35rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 3vw, 2.6rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.site-break__hours {
+  margin-top: 0.65rem;
+  color: var(--text-light);
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+}
+
 /* Footer — Tastyc f3a0523: map + visit panel */
 
 .footer {
@@ -56,15 +89,6 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-.footer__arch {
-  width: 180px;
-  margin: 0 auto 1.5rem;
-}
-
-.footer__arch .image-col.img-size-lg {
-  padding-top: 130%;
 }
 
 .footer__brand {
@@ -195,10 +219,6 @@
   .footer__panel-content {
     padding: 32px 20px 20px;
     padding-bottom: max(20px, env(safe-area-inset-bottom, 0px));
-  }
-
-  .footer__arch {
-    width: 140px;
   }
 
   .site-logo--footer {

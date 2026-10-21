@@ -23,7 +23,7 @@
   z-index: 2;
 }
 
-.special-chef-grid__cell--chef {
+.special-chef-grid__cell--visit {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,6 +81,27 @@
   margin-bottom: 1.25rem;
 }
 
+/* Designed posters include their own title, so the arch must not crop them. */
+.special-chef-grid__swiper .image-col.img-size-sq-2.image-col--poster {
+  padding-top: 100%;
+  border-radius: 12px;
+}
+
+.special-chef-grid__swiper .image-col.img-size-sq-2.image-col--poster::before {
+  border-radius: 8px;
+}
+
+.special-chef-grid__swiper .image-col.img-size-sq-2.image-col--poster img {
+  object-fit: contain;
+  object-position: center;
+  border-radius: 12px;
+  background: #111;
+}
+
+.special-chef-grid__swiper .image-col.img-size-sq-2.image-col--poster:hover img {
+  transform: none;
+}
+
 .special-chef-grid__swiper .tst-slider-two-slide .h6 {
   font-family: var(--font-serif);
   font-size: 1.25rem;
@@ -90,7 +111,21 @@
   letter-spacing: 0.04em;
 }
 
-.special-chef-grid__swiper .tst-slider-two-slide .suptitle {
+.special-chef-grid__swiper .dish-name-en {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.special-chef-grid__swiper .dish-desc-en {
+  display: block;
+  margin-top: 0.65rem;
+}
   display: block;
   font-size: 11px;
   letter-spacing: 0.2em;
@@ -193,42 +228,28 @@
   display: block;
 }
 
-.special-chef-grid__chef-inner {
+.special-chef-grid__visit-inner {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 420px;
+  max-width: 460px;
   margin: 0 auto;
   text-align: center;
 }
 
-.special-chef-grid__chef-inner .tst-image-s-2 {
-  width: 130px;
-  margin: 0 auto 20px;
-}
-
-.special-chef-grid__chef-inner .image-col.img-size-lg {
-  width: 100%;
-  margin: 0;
-}
-
-.special-chef-grid__chef-inner .title-box {
+.special-chef-grid__visit-inner .title-box {
   margin-bottom: 1.25rem;
 }
 
-.special-chef-grid__chef-inner .tst-title--h {
-  font-family: var(--font-serif);
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 500;
-  color: var(--text);
-  margin: 0 0 1rem;
-}
-
-.special-chef-grid__chef-text {
-  margin: 0 0 1.75rem;
+.special-chef-grid__visit-text {
+  margin: 0 0 0.75rem;
   font-size: 0.95rem;
   line-height: 1.65;
   color: var(--text-light);
+}
+
+.special-chef-grid__visit-text + .theme-btn {
+  margin-top: 1rem;
 }
 
 .tst-mb-15 { margin-bottom: 15px; }
@@ -245,7 +266,7 @@
     padding: 2.5rem 1.5rem;
   }
 
-  .special-chef-grid__cell--chef {
+  .special-chef-grid__cell--visit {
     padding: 80px 10px;
   }
 
@@ -273,7 +294,7 @@
     padding: 2rem 1rem;
   }
 
-  .special-chef-grid__cell--chef {
+  .special-chef-grid__cell--visit {
     padding: 3rem 1.25rem;
   }
 
@@ -288,7 +309,4 @@
     margin-right: auto;
   }
 
-  .special-chef-grid__chef-inner .tst-title--h {
-    font-size: 1.65rem;
-  }
 }

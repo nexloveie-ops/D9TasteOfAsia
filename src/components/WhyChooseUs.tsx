@@ -49,7 +49,7 @@ export function WhyChooseUs() {
   return (
     <section ref={ref} className="section why reveal">
       <div className="container">
-        <SectionHeading suptitle="Why Choose Us" title="Why Dine With Us" centered />
+        <SectionHeading suptitle="The Team" title="Meet Our Team" centered />
 
         <div className="why-grid">
           {whyItems.map((item) => (
@@ -66,12 +66,14 @@ export function WhyChooseUs() {
               </div>
 
               <div className="tst-count">
-                <div className="h2">
-                  <AnimatedNumber target={item.value} />
-                  <span className="tst-after">
-                    <span>{item.suffix}</span>
-                  </span>
-                </div>
+                {'value' in item && (
+                  <div className="h2">
+                    <AnimatedNumber target={item.value} />
+                    <span className="tst-after">
+                      <span>{item.suffix}</span>
+                    </span>
+                  </div>
+                )}
                 <div className="h6 tst-color tst-mb-20">
                   <span>{item.label}</span>
                 </div>
