@@ -8,10 +8,10 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 
 interface HeroProps {
-  onOpenReservation: () => void;
+  onOpenMenu: () => void;
 }
 
-export function Hero({ onOpenReservation }: HeroProps) {
+export function Hero({ onOpenMenu }: HeroProps) {
   const [scrolled, setScrolled] = useState(false);
   const [compactHero, setCompactHero] = useState(
     () => window.matchMedia('(max-width: 768px)').matches,
@@ -65,9 +65,9 @@ export function Hero({ onOpenReservation }: HeroProps) {
                   <h1 className="hero__title tst-title--h">{slide.title}</h1>
                   <p className="hero__text tst-text-lg">{slide.subtitle}</p>
                   <div className="hero__actions">
-                    <ThemeButton onClick={onOpenReservation}>Book a table</ThemeButton>
+                    <ThemeButton onClick={onOpenMenu}>FULL MENU</ThemeButton>
                     <a href="#menu" className="tst-label tst-label--light">
-                      View Menu
+                      Today Special
                     </a>
                   </div>
                 </div>

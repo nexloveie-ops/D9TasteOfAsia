@@ -4,7 +4,6 @@ import { specialDishes } from '../data/menu';
 import { assets } from '../assets';
 import { siteContact } from '../data/site';
 import { SectionHeading } from './SectionHeading';
-import { ThemeButton } from './ThemeButton';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -93,9 +92,6 @@ export function SpecialChefGrid() {
             <SectionHeading suptitle="Visit Us" title="Taste Of Asia" centered />
             <p className="special-chef-grid__visit-text">{siteContact.address}</p>
             <p className="special-chef-grid__visit-text">{siteContact.hours}</p>
-            <ThemeButton href="#reservation" variant="border">
-              Book a Table
-            </ThemeButton>
           </div>
         </div>
       </div>

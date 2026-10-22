@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react';
 import { ThemeButton } from './ThemeButton';
 import { BrandMark } from './BrandMark';
+import { TAKEOUT_MENU_URL } from './OrderMenuDialog';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
-  { href: '#menu', label: 'Menu' },
   { href: '#reservation', label: 'Reservation' },
   { href: '#contact', label: 'Contact' },
 ];
 
 interface HeaderProps {
   onOpenReservation: () => void;
+  onOpenMenu: () => void;
 }
 
-export function Header({ onOpenReservation }: HeaderProps) {
+export function Header({ onOpenReservation, onOpenMenu }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -39,7 +40,22 @@ export function Header({ onOpenReservation }: HeaderProps) {
         </a>
 
         <nav className={`header__nav ${open ? 'header__nav--open' : ''}`}>
-          {navLinks.map((link) => (
+          <a href="#home" onClick={() => setOpen(false)}>Home</a>
+          <a href="#about" onClick={() => setOpen(false)}>About</a>
+          <a
+            href={TAKEOUT_MENU_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(event) => {
+              setOpen(false);
+              if (window.matchMedia('(max-width: 768px)').matches) return;
+              event.preventDefault();
+              onOpenMenu();
+            }}
+          >
+            Menu
+          </a>
+          {navLinks.slice(2).map((link) => (
             <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
               {link.label}
             </a>
