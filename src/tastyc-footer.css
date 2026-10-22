@@ -1,34 +1,53 @@
-/* Break between the page and the map footer */
+/* Opening offer between the page and the map footer */
 .site-break {
   position: relative;
-  background-color: #0c1c1f;
-  background-image: url('/assets/tastyc/images/pattern-dark.png');
-  background-repeat: repeat;
+  background:
+    radial-gradient(ellipse at center, #c83b4a 0%, #a11f30 48%, #7d1524 100%);
   text-align: center;
-  padding: 4.5rem 1.25rem;
-  border-top: 1px solid rgba(230, 177, 95, 0.4);
-  border-bottom: 1px solid rgba(230, 177, 95, 0.4);
+  padding: 3.75rem 1.25rem;
+  border-top: 1px solid rgba(255, 214, 160, 0.4);
+  border-bottom: 1px solid rgba(255, 214, 160, 0.4);
+  color: #fff6ee;
 }
 
 .site-break__inner {
-  width: min(100%, 720px);
+  width: min(100%, 760px);
   margin-inline: auto;
 }
 
-.site-break__name {
-  margin-top: 0.35rem;
-  font-family: var(--font-serif);
-  font-size: clamp(1.85rem, 3vw, 2.6rem);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--text);
+.site-break__eyebrow {
+  justify-content: center;
+  color: #f6d7a4;
+  margin-bottom: 0.85rem;
 }
 
-.site-break__hours {
-  margin-top: 0.65rem;
-  color: var(--text-light);
-  letter-spacing: 0.08em;
+.site-break__eyebrow .icon-elem-svg {
+  color: #f6d7a4;
+}
+
+.site-break__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.site-break__title-zh {
+  margin-top: 0.55rem;
+  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+  letter-spacing: 0.28em;
+  color: #fff6ee;
+}
+
+.site-break__note {
+  margin-top: 1.15rem;
   font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 246, 238, 0.9);
 }
 
 /* Footer — Tastyc f3a0523: map + visit panel */
