@@ -36,18 +36,11 @@ export function Hero({ onOpenReservation }: HeroProps) {
       <Swiper
         key={compactHero ? 'compact' : 'full'}
         modules={[Autoplay, EffectFade, Navigation]}
-        effect={compactHero ? 'slide' : 'fade'}
-        speed={900}
+        effect="fade"
+        fadeEffect={{ crossFade: true }}
+        speed={compactHero ? 1200 : 900}
         loop={!compactHero}
         rewind={compactHero}
-        autoHeight={compactHero}
-        onSlideChange={(swiper) => {
-          if (!swiper.params.autoHeight) return;
-          requestAnimationFrame(() => swiper.updateAutoHeight());
-        }}
-        onSlideChangeTransitionEnd={(swiper) => {
-          if (swiper.params.autoHeight) swiper.updateAutoHeight();
-        }}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         navigation={{
           prevEl: '.hero__nav-prev',
@@ -59,7 +52,7 @@ export function Hero({ onOpenReservation }: HeroProps) {
           <SwiperSlide key={slide.id}>
             <div className={`hero__cover tst-cover-frame${slide.artwork ? ' hero__cover--artwork' : ''}`}>
               <img
-                src={slide.image}
+                src={compactHero && slide.mobileImage ? slide.mobileImage : slide.image}
                 alt={slide.artwork ? 'Taste Of Asia — Authentic Asian Cuisine' : ''}
                 className="tst-cover"
               />

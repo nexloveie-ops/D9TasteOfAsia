@@ -25,6 +25,8 @@ export interface HeroSlide {
   title: string;
   subtitle: string;
   image: string;
+  /** Square photo used instead of the wide banner on phones. */
+  mobileImage?: string;
   /** Poster already includes its own title, so the slide stays image-only. */
   artwork?: boolean;
 }
@@ -37,6 +39,7 @@ export const heroSlides: HeroSlide[] = [
     subtitle:
       'Two culinary traditions under one roof — fine Asian dining in the heart of Dublin.',
     image: assets.hero[0],
+    mobileImage: assets.reservationDining,
   },
   {
     id: 2,
@@ -44,6 +47,7 @@ export const heroSlides: HeroSlide[] = [
     title: 'Taste Of Asia',
     subtitle: 'Authentic Asian cuisine',
     image: assets.hero[1],
+    mobileImage: assets.grid.balcony,
     artwork: true,
   },
 ];

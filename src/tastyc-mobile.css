@@ -130,34 +130,67 @@
     height: 48px;
   }
 
-  /* Hero — wide banners stay complete instead of being cropped by the tall viewport */
+  /* Hero — same full-screen frame as desktop; the wave peaks at the scroll pill */
   .hero {
-    height: auto;
+    height: 100svh;
+    height: 100dvh;
     min-height: 0;
-    padding-top: var(--header-h);
-    padding-bottom: 160px;
+    padding: 0;
   }
 
-  .hero .hero__swiper,
+  .hero .hero__swiper {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
   .hero .hero__swiper .swiper-slide {
-    height: auto;
+    height: 100%;
   }
 
   .hero .hero__cover.tst-cover-frame {
-    position: relative;
-    inset: auto;
-    aspect-ratio: 1949 / 807;
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    overflow: hidden;
     background: #0c1c1f;
   }
 
   .hero .hero__cover img.tst-cover {
-    object-fit: contain;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     object-position: center;
   }
 
+  .hero .swiper-fade .swiper-slide {
+    animation: hero-phone-fade-out 1.2s ease both;
+  }
+
+  .hero .swiper-fade .swiper-slide-active {
+    animation: hero-phone-fade-in 1.2s ease both;
+  }
+
+  .hero .swiper-slide .hero__cover img.tst-cover {
+    transform: scale(1.08) !important;
+    transition: transform 6s ease;
+  }
+
+  .hero .swiper-slide-active .hero__cover img.tst-cover {
+    transform: scale(1) !important;
+  }
+
+  .hero .hero__overlay {
+    display: block;
+  }
+
   .hero .hero__container {
-    height: auto;
-    padding: 1.5rem 1rem 0.5rem;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    height: 100%;
+    padding: calc(var(--header-h) + 0.75rem) 1rem 8.5rem;
   }
 
   .hero__title {
@@ -174,26 +207,26 @@
     gap: 1.25rem;
   }
 
+  @keyframes hero-phone-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes hero-phone-fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
   .hero__curve {
     height: 96px;
   }
 
-  .hero-transition::after {
-    height: 104px;
-    clip-path: polygon(0 100%, 0 30%, 50% 0%, 100% 30%, 100% 100%);
-  }
-
-  .content-frame::before {
-    height: 56px;
-    margin-top: -56px;
-  }
-
-  .hero-transition .scroll-hint {
-    bottom: 10px;
-    transform: scale(0.72);
-    margin-left: -54px;
-    width: 108px;
-    height: 150px;
+  .hero-transition > a.scroll-hint {
+    bottom: 0;
+    width: 120px;
+    height: 168px;
+    margin-left: -60px;
+    transform: none;
   }
 
   /* FAB */
