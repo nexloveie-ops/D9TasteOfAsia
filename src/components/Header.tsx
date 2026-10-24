@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ThemeButton } from './ThemeButton';
 import { BrandMark } from './BrandMark';
-import { TAKEOUT_MENU_URL } from './OrderMenuDialog';
+import { MEMBER_CENTER_URL, TAKEOUT_MENU_URL } from './OrderMenuDialog';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -13,9 +13,10 @@ const navLinks = [
 interface HeaderProps {
   onOpenReservation: () => void;
   onOpenMenu: () => void;
+  onOpenMember: () => void;
 }
 
-export function Header({ onOpenReservation, onOpenMenu }: HeaderProps) {
+export function Header({ onOpenReservation, onOpenMenu, onOpenMember }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -54,6 +55,19 @@ export function Header({ onOpenReservation, onOpenMenu }: HeaderProps) {
             }}
           >
             Menu
+          </a>
+          <a
+            href={MEMBER_CENTER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(event) => {
+              setOpen(false);
+              if (window.matchMedia('(max-width: 768px)').matches) return;
+              event.preventDefault();
+              onOpenMember();
+            }}
+          >
+            Member Center
           </a>
           {navLinks.slice(2).map((link) => (
             <a key={link.href} href={link.href} onClick={() => setOpen(false)}>

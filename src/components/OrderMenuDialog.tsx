@@ -4,12 +4,17 @@ import { createPortal } from 'react-dom';
 export const TAKEOUT_MENU_URL =
   'https://food.lztechserve.com/tasteofasia?type=takeout';
 
+export const MEMBER_CENTER_URL =
+  'https://food.lztechserve.com/tasteofasia/customer/member';
+
 interface OrderMenuDialogProps {
   open: boolean;
+  url: string;
+  title: string;
   onClose: () => void;
 }
 
-export function OrderMenuDialog({ open, onClose }: OrderMenuDialogProps) {
+export function OrderMenuDialog({ open, url, title, onClose }: OrderMenuDialogProps) {
   const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -38,7 +43,7 @@ export function OrderMenuDialog({ open, onClose }: OrderMenuDialogProps) {
         className="order-dialog__stage"
         role="dialog"
         aria-modal="true"
-        aria-label="Menu"
+        aria-label={title}
         onClick={(event) => event.stopPropagation()}
       >
         <button
@@ -53,8 +58,8 @@ export function OrderMenuDialog({ open, onClose }: OrderMenuDialogProps) {
         <div className="order-dialog__phone">
           <iframe
             className="order-dialog__frame"
-            src={TAKEOUT_MENU_URL}
-            title="Taste Of Asia menu"
+            src={url}
+            title={title}
           />
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Header } from './components/Header';
-import { OrderMenuDialog, TAKEOUT_MENU_URL } from './components/OrderMenuDialog';
+import { MEMBER_CENTER_URL, OrderMenuDialog, TAKEOUT_MENU_URL } from './components/OrderMenuDialog';
 import { Preloader } from './components/Preloader';
 import { Hero } from './components/Hero';
 import { ScrollHint } from './components/ScrollHint';
@@ -20,16 +20,29 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [menuCategory, setMenuCategory] = useState<MenuCategory | null>(null);
   const [orderOpen, setOrderOpen] = useState(false);
+  const [orderUrl, setOrderUrl] = useState(TAKEOUT_MENU_URL);
+  const [orderTitle, setOrderTitle] = useState('Menu');
   const specials = useTodaysSpecials();
   const closeOrder = useCallback(() => setOrderOpen(false), []);
 
-  const openFullMenu = useCallback(() => {
+  const openExternalPage = useCallback((url: string, title: string) => {
     if (window.matchMedia('(max-width: 768px)').matches) {
-      window.open(TAKEOUT_MENU_URL, '_blank', 'noopener,noreferrer');
+      window.open(url, '_blank', 'noopener,noreferrer');
       return;
     }
+    setOrderUrl(url);
+    setOrderTitle(title);
     setOrderOpen(true);
   }, []);
+
+  const openFullMenu = useCallback(
+    () => openExternalPage(TAKEOUT_MENU_URL, 'Menu'),
+    [openExternalPage],
+  );
+  const openMember = useCallback(
+    () => openExternalPage(MEMBER_CENTER_URL, 'Member Center'),
+    [openExternalPage],
+  );
 
   useEffect(() => {
     document.body.classList.add('ui-dark', 'full-layout');
@@ -55,7 +68,7 @@ function App() {
   return (
     <>
       <Preloader />
-      <Header onOpenReservation={openReservation} onOpenMenu={openFullMenu} />
+      <Header onOpenReservation={openReservation} onOpenMenu={openFullMenu} onOpenMember={openMember} />
       <main className="site-main tst-dynamic-content full-layout">
         <div className="hero-transition">
           <Hero onOpenMenu={openFullMenu} />
@@ -77,7 +90,7 @@ function App() {
         Reservation
       </button>
       <VisitSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <OrderMenuDialog open={orderOpen} onClose={closeOrder} />
+      <OrderMenuDialog open={orderOpen} url={orderUrl} title={orderTitle} onClose={closeOrder} />
     </>
   );
 }
