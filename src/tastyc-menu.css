@@ -225,17 +225,9 @@
   background: var(--accent);
 }
 
-.menu-tabs-box .dish-card .dish-title .menu-list-line {
-  flex: 1 1 auto;
-  min-width: 12px;
-  height: 1px;
-  margin: 0 8px 5px;
-  align-self: flex-end;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.35);
-}
-
 .menu-tabs-box .dish-card .dish-title .price {
   flex-shrink: 0;
+  margin-left: auto;
   font-family: var(--font-serif);
   font-size: 1.05rem;
   color: var(--accent);

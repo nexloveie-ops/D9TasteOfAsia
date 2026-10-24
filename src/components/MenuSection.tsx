@@ -46,7 +46,6 @@ function DishCard({ item }: { item: TodaysSpecialItem }) {
             </span>
             {item.nameEn && <span className="dish-name-en">{item.nameEn}</span>}
           </div>
-          <span className="menu-list-line" />
           <div className="price">
             {item.price > item.sellPrice && (
               <span className="price-old">€{item.price.toFixed(2)}</span>

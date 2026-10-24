@@ -36,8 +36,8 @@
 
 .site-break__title-zh {
   margin-top: 0.55rem;
-  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
-  letter-spacing: 0.28em;
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  letter-spacing: 0.08em;
   color: #fff6ee;
 }
 
@@ -48,6 +48,12 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(255, 246, 238, 0.9);
+}
+
+@media (max-width: 768px) {
+  .site-break__title {
+    font-size: 1.6rem;
+  }
 }
 
 /* Footer — Tastyc f3a0523: map + visit panel */
