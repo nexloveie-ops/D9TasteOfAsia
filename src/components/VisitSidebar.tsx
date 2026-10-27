@@ -31,8 +31,12 @@ export function VisitSidebar({ open, onClose }: VisitSidebarProps) {
         </ul>
         <p><a href={`mailto:${siteContact.email}`}>{siteContact.email}</a></p>
         <p>
-          Booking:{' '}
-          <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`}>{siteContact.phone}</a>
+          Landline:{' '}
+          <a href={`tel:${siteContact.landline.tel}`}>{siteContact.landline.display}</a>
+        </p>
+        <p>
+          Mobile:{' '}
+          <a href={`tel:${siteContact.mobile.tel}`}>{siteContact.mobile.display}</a>
         </p>
         <ThemeButton
           onClick={() => {

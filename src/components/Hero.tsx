@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import { heroSlides } from '../data/menu';
+import { sitePhones } from '../data/site';
 import { ThemeButton } from './ThemeButton';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
@@ -79,7 +80,13 @@ export function Hero({ onOpenMenu }: HeroProps) {
 
       <div className="banner-call">
         <span className="line" />
-        <a href="tel:+353123456789">+353 1 234 5678</a>
+        <span className="banner-call__numbers">
+          {sitePhones.map((phone) => (
+            <a key={phone.tel} href={`tel:${phone.tel}`}>
+              {phone.display}
+            </a>
+          ))}
+        </span>
         <span className="line" />
       </div>
 

@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { assets } from '../assets';
+import { siteContact } from '../data/site';
 import { SectionHeading } from './SectionHeading';
 export function Reservation() {
   const [submitted, setSubmitted] = useState(false);
@@ -18,7 +19,9 @@ export function Reservation() {
               <SectionHeading suptitle="Online Reservation" title="Book A Table" centered />
               <p className="reservation__lead">
                 Booking request{' '}
-                <a href="tel:+353123456789">+353 1 234 5678</a>
+                <a href={`tel:${siteContact.landline.tel}`}>{siteContact.landline.display}</a>
+                {' · '}
+                <a href={`tel:${siteContact.mobile.tel}`}>{siteContact.mobile.display}</a>
                 {' '}or fill out the order form
               </p>
             </div>
@@ -53,7 +56,7 @@ export function Reservation() {
                     <option value="" disabled>
                       Time
                     </option>
-                    {['12:00', '12:30', '13:00', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00'].map(
+                    {['12:00', '12:30', '13:00', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30'].map(
                       (t) => (
                         <option key={t} value={t}>
                           {t}

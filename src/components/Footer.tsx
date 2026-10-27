@@ -46,8 +46,12 @@ export function Footer() {
                   <a href={`mailto:${siteContact.email}`}>{siteContact.email}</a>
                 </li>
                 <li>
-                  Booking Request:{' '}
-                  <a href={`tel:${siteContact.phone.replace(/\s/g, '')}`}>{siteContact.phone}</a>
+                  Landline:{' '}
+                  <a href={`tel:${siteContact.landline.tel}`}>{siteContact.landline.display}</a>
+                </li>
+                <li>
+                  Mobile:{' '}
+                  <a href={`tel:${siteContact.mobile.tel}`}>{siteContact.mobile.display}</a>
                 </li>
               </ul>
             </div>

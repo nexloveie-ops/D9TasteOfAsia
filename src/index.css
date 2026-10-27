@@ -25,7 +25,10 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
 
 body {
   font-family: var(--font-sans);
@@ -483,14 +486,20 @@ h1, h2, h3, h4 {
   gap: 20px;
 }
 
+.banner-call__numbers {
+  display: flex;
+  align-items: center;
+  gap: 4.75rem;
+  transform: rotate(-90deg);
+  white-space: nowrap;
+}
+
 .banner-call a {
   display: block;
-  width: 170px;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.05em;
   color: var(--white);
-  transform: rotate(-90deg);
   white-space: nowrap;
   text-align: center;
 }

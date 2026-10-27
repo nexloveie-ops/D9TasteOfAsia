@@ -52,7 +52,7 @@
   max-width: 350px;
   margin: 0 auto;
   padding-bottom: 50px;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .special-chef-grid__swiper .swiper-slide {

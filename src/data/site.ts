@@ -7,10 +7,13 @@ export const siteBrand = {
 
 export const siteContact = {
   address: '96B Omni Park Shopping Centre, Santry, Dublin, D09 ECX6',
-  hours: 'Daily — 11:00 am to 10:00 pm',
+  hours: 'Daily — 12:00 pm to 10:00 pm · Last order 9:30 pm',
   email: 'booking@tasteofasia.ie',
-  phone: '+353 1 234 5678',
+  landline: { label: 'Landline', display: '01 688 8888', tel: '+35316888888' },
+  mobile: { label: 'Mobile', display: '087 688 6611', tel: '+353876886611' },
   mapQuery: '96B Omni Park Shopping Centre, Santry, Dublin, D09 ECX6, Ireland',
 } as const;
+
+export const sitePhones = [siteContact.landline, siteContact.mobile] as const;
 
 export const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(siteContact.mapQuery)}&t=m&z=15&output=embed&iwloc=near`;
