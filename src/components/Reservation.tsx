@@ -2,12 +2,47 @@ import { useState, type FormEvent } from 'react';
 import { assets } from '../assets';
 import { siteContact } from '../data/site';
 import { SectionHeading } from './SectionHeading';
+const TABLE_RESERVATION_URL = 'https://food.lztechserve.com/api/public/table-reservation';
+
 export function Reservation() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    const form = new FormData(e.currentTarget);
+    setSending(true);
+    setError('');
+    try {
+      const response = await fetch(TABLE_RESERVATION_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          slug: 'tasteofasia',
+          name: form.get('name'),
+          phone: form.get('phone'),
+          email: form.get('email'),
+          guests: Number(form.get('guests')),
+          date: form.get('date'),
+          time: form.get('time'),
+          message: form.get('notes') || '',
+        }),
+      });
+      const data = (await response.json().catch(() => null)) as { error?: { message?: string } } | null;
+      if (!response.ok) {
+        throw new Error(data?.error?.message || 'The booking could not be sent. Please call the restaurant.');
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(
+        err instanceof Error && err.message
+          ? err.message
+          : 'The booking could not be sent. Please call the restaurant.',
+      );
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -29,7 +64,7 @@ export function Reservation() {
             {submitted ? (
               <div className="reservation-form__success">
                 <h3>Thank You!</h3>
-                <p>We&apos;ve received your booking request and will confirm shortly.</p>
+                <p>A confirmation text has been sent to your mobile, and the restaurant has received your table request.</p>
               </div>
             ) : (
               <form className="reservation-form" onSubmit={handleSubmit}>
@@ -71,7 +106,12 @@ export function Reservation() {
                   placeholder="Message"
                   aria-label="Message"
                 />
-                <button type="submit" className="theme-btn btn-style-one reservation-form__submit">
+                {error && <p className="reservation-form__error">{error}</p>}
+                <button
+                  type="submit"
+                  className="theme-btn btn-style-one reservation-form__submit"
+                  disabled={sending}
+                >
                   <span className="btn-wrap">
                     <span className="text-one">Send Message</span>
                     <span className="text-two">Send Message</span>

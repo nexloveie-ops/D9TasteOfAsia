@@ -152,6 +152,13 @@
   cursor: pointer;
 }
 
+.reservation-form__error {
+  margin: 0 0 1rem;
+  color: #ffb4b4;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 .reservation-form__success {
   text-align: center;
   padding: 3rem 1rem;
